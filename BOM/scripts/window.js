@@ -14,16 +14,16 @@ console.log(`La ventana de tu navegador mide ${window.innerHeight}px de alto`);
 */
 
 let ventana;
-let contador = parseInt(localStorage.getItem('contador')) || 0;
+let contadorVentanasVecesAbiertas = parseInt(localStorage.getItem('contadorVentanasVecesAbiertas')) || 0;
 
 const abrirVentana = () => {
-    contador++;
-    localStorage.setItem('contador', contador);
+    contadorVentanasVecesAbiertas++;
+    localStorage.setItem('contadorVentanasVecesAbiertas', contadorVentanasVecesAbiertas);
     if (ventana && !ventana.closed) {
-        ventana.document.body.innerHTML = `<h1>Hola. Escribiendo en la nueva ventana</h1><p>El botón de abrirVentana ha sido pulsado ${contador} veces.</p>`;
+        ventana.document.body.innerHTML = `<h1>Hola. Escribiendo en la nueva ventana</h1><p>El botón de abrirVentana ha sido pulsado ${contadorVentanasVecesAbiertas} veces.</p>`;
     } else {
         ventana = window.open('', 'Mi nueva ventana', 'width=500, height=500');
-        ventana.document.write(`<h1>Hola. Escribiendo en la nueva ventana</h1><p>El botón de abrirVentana ha sido pulsado ${contador} veces.</p>`);
+        ventana.document.write(`<h1>Hola. Escribiendo en la nueva ventana</h1><p>El botón de abrirVentana ha sido pulsado ${contadorVentanasVecesAbiertas} veces.</p>`);
     }
 };
 
@@ -38,7 +38,8 @@ const cerrarVentana = () => {
 */
 
 console.log('%c\n⧭ Ancho de la pantalla', 'color: #90f38b', window.screen.width);
-console.log('%c⧭ Alto de la pantalla', 'color: #4fa7fa', window.screen.height);
+console.log('%c⧭ Alto de la pantalla', 'color: #90f38b', window.screen.height);
 
-console.log('%c\n⧭ Ancho de la pantalla sin barra de Windows', 'color: #90f38b', window.screen.availWidth);
+console.log('%c\n⧭ Ancho de la pantalla sin barra de Windows', 'color: #4fa7fa', window.screen.availWidth);
 console.log('%c⧭ Alto de la pantalla sin barra de Windows', 'color: #4fa7fa', window.screen.availHeight);
+
