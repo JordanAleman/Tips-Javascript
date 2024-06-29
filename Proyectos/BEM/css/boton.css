@@ -1,0 +1,41 @@
+/* ------------------------------ Bloque botón ------------------------------ */
+.boton {
+  border: none;
+  min-width: 180px;
+  height: 50px;
+  padding: 0 30px;
+  color: white;
+  border-radius: 100px;
+  text-decoration: none;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #403cc2;
+  transition: 0.3s ease all;
+}
+
+.boton:hover {
+  background: #1b1881;
+  text-decoration: none;
+}
+
+.boton__texto {
+  font-weight: 600;
+}
+
+.boton--absolute {
+  position: absolute;
+  right: 20px;
+  bottom: -25px;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                Modificadores                               */
+/* -------------------------------------------------------------------------- */
+.boton--verde {
+  background-color: #7ba771;
+}
+
+.boton--verde:hover {
+  background-color: #437837;
+}

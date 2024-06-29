@@ -36,6 +36,8 @@ boton1.addEventListener('click', () => {
 	primeraCaja.classList.toggle('activa');
 });
 
+boton1.addEventListener('click')
+
 /*
 	📌 Agregando el evento a multiples elementos
 	Podemos agregar el evento a multiples elementos recorriendolos mediante un ciclo.
