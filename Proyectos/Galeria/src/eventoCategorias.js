@@ -43,4 +43,5 @@ contenedorCategorias.addEventListener('click', (e) => {
 const activarGaleria = () => {
     contenedorGaleria.classList.add('galeria--active');
     document.body.style.overflow = 'hidden';
+    galeriaCarouselSlides.innerHTML = '';
 };
