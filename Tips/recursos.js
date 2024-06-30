@@ -1,10 +1,23 @@
 // Ejemplo de un callback hecho por mí
 
-// Función para loggear cada elemento del array con espacios dinámicos
+/**
+ * Loggea cada elemento del array con un formato específico, añadiendo espacios dinámicos 
+ * para alinear la salida en la consola.
+ * 
+ * @param {Array<Object>} array - El array de objetos a procesar.
+ * @param {string} etiquetaProp - El nombre de la propiedad que se usará como etiqueta.
+ * @param {string} valorProp - El nombre de la propiedad cuyo valor se mostrará en el log.
+ */
 export const logElementosArray = (array, etiquetaProp, valorProp) => {
-    // Encontrar la longitud de la propiedad más larga en el array de objetos
-    const obtenerLongitudMaxima = (array, getValor) => {
-        return array.reduce((max, item) => Math.max(max, getValor(item).toString().length), 0);
+    /**
+     * Encuentra la longitud de la propiedad más larga en el array de objetos.
+     * 
+     * @param {Array<Object>} log - El array de objetos a procesar.
+     * @param {function(Object): string} getValor - Función que devuelve el valor de la propiedad a medir.
+     * @returns {number} La longitud máxima de la propiedad especificada en el array de objetos.
+     */
+    const obtenerLongitudMaxima = (log, getValor) => {
+        return log.reduce((max, item) => Math.max(max, getValor(item).toString().length), 0);
     };
 
     // Obtener la longitud máxima de la propiedad de etiquetaProp
