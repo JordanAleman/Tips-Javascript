@@ -28,7 +28,7 @@ var dataFotos = {
                 id: 4,
                 nombre: 'America 4',
                 descripcion:
-                    'America 4 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id enim ac diam consectetur vulputate eget in magna. Sed fermentum, sapien nec vulputate bibendum, urna neque eleifend leo, at porta diam risus non ligula. Nulla ac venenatis augue. Morbi lobortis libero sit amet justo cursus, iaculis ultricies sapien lacinia.',
+                    'America 4 - Lorem ipsum do$lor sit amet, consectetur adipiscing elit. Phasellus id enim ac diam consectetur vulputate eget in magna. Sed fermentum, sapien nec vulputate bibendum, urna neque eleifend leo, at porta diam risus non ligula. Nulla ac venenatis augue. Morbi lobortis libero sit amet justo cursus, iaculis ultricies sapien lacinia.',
                 ruta: './img/america/4.jpg',
             },
             {
@@ -477,6 +477,8 @@ categorias.forEach((categoria) => {
 /* --------------------------- Constantes del DOM --------------------------- */
 const contenedorCategorias = document.querySelector('#categorias');
 const contenedorGaleria = document.querySelector('#galeria');
+const galeriaCarouselSlides = document.querySelector('.galeria__carousel-slides');
+
 
 /* -------------------------------------------------------------------------- */
 /*                                  Funciones                                 */
@@ -489,16 +491,29 @@ contenedorCategorias.addEventListener('click', (e) => {
 
     if (!categoriaLink) return;
 
-    contenedorGaleria.classList.add('galeria--active');
-    document.body.style.overflow = 'hidden';
+    activarGaleria();
 
-    const categoriaActiva = e.target.dataset.categoria;
+    const categoriaActiva = categoriaLink.dataset.categoria;
     const fotos = dataFotos.fotos[categoriaActiva];
 
-    console.log(fotos);
     fotos.forEach(foto => {
-        console.log(foto);
+        const slide = `
+            <a href="#" class="galeria__carousel-slide">
+                <img
+                class="galeria__carousel-image"
+                src="${foto.ruta}"
+                alt=""
+                />
+            </a>
+        `;
+
+        galeriaCarouselSlides.innerHTML += slide;
     });
 
-    
+    document.querySelectorAll(".galeria__carousel-slide")[0].classList.add('galeria__carousel-slide--active');
 });
+
+const activarGaleria = () => {
+    contenedorGaleria.classList.add('galeria--active');
+    document.body.style.overflow = 'hidden';
+};
