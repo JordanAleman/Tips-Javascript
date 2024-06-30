@@ -12,7 +12,7 @@ const { categorias } = dataCategorias;
 /* -------------------------------------------------------------------------- */
 categorias.forEach((categoria) => {
   contenedorCategorias.innerHTML += `
-          <a href="#" class="categoria" data-categoria="america">
+          <a href="#" class="categoria" data-categoria="${categoria.id}" name="categoriaName">
             <img class="categoria__img" src="${categoria.imagenPortada}" alt="" />
             <div class="categoria__datos">
               <p class="categoria__nombre">${categoria.nombre}</p>
@@ -20,6 +20,4 @@ categorias.forEach((categoria) => {
             </div>
           </a>
     `;
-
-    console.log(categoria.imagenPortada);
 });

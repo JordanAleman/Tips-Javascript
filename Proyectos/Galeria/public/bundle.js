@@ -1,6 +1,6 @@
 'use strict';
 
-var data = {
+var dataFotos = {
     fotos: {
         america: [
             {
@@ -431,7 +431,7 @@ var data = {
     },
 };
 
-const { fotos } = data;
+const { fotos } = dataFotos;
 
 var dataCategorias = {
 	categorias: [
@@ -452,7 +452,7 @@ var dataCategorias = {
 /* --------------------------------- Imports -------------------------------- */
 
 /* --------------------------- Constantes del DOM --------------------------- */
-const contenedorCategorias = document.querySelector('#categorias');
+const contenedorCategorias$1 = document.querySelector('#categorias');
 
 /* --------------------------- Variables generales -------------------------- */
 const { categorias } = dataCategorias;
@@ -461,8 +461,8 @@ const { categorias } = dataCategorias;
 /*                                  Funciones                                 */
 /* -------------------------------------------------------------------------- */
 categorias.forEach((categoria) => {
-  contenedorCategorias.innerHTML += `
-          <a href="#" class="categoria" data-categoria="america">
+  contenedorCategorias$1.innerHTML += `
+          <a href="#" class="categoria" data-categoria="${categoria.id}" name="categoriaName">
             <img class="categoria__img" src="${categoria.imagenPortada}" alt="" />
             <div class="categoria__datos">
               <p class="categoria__nombre">${categoria.nombre}</p>
@@ -470,6 +470,35 @@ categorias.forEach((categoria) => {
             </div>
           </a>
     `;
+});
 
-    console.log(categoria.imagenPortada);
+/* --------------------------------- Imports -------------------------------- */
+
+/* --------------------------- Constantes del DOM --------------------------- */
+const contenedorCategorias = document.querySelector('#categorias');
+const contenedorGaleria = document.querySelector('#galeria');
+
+/* -------------------------------------------------------------------------- */
+/*                                  Funciones                                 */
+/* -------------------------------------------------------------------------- */
+contenedorCategorias.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    // Comprueba si el elemento 'a' más cercano tiene el atributo name="categoriaName"
+    const categoriaLink = e.target.closest('a');
+
+    if (!categoriaLink) return;
+
+    contenedorGaleria.classList.add('galeria--active');
+    document.body.style.overflow = 'hidden';
+
+    const categoriaActiva = e.target.dataset.categoria;
+    const fotos = dataFotos.fotos[categoriaActiva];
+
+    console.log(fotos);
+    fotos.forEach(foto => {
+        console.log(foto);
+    });
+
+    
 });
